@@ -1,18 +1,44 @@
 package wdx.cr.quizz;
 
+import java.util.Arrays;
+
 class WordBase {
+    public static final int BASE_NUMBER = 51;
 
     public static int maxScore(int[] arr) {
 
-        int j=0;
-        for (int i = 1; i < 51; i++) {
-            if (arr[j]<arr[i]) j=i;
+        // Это че? Поиск максимума в массиве? А попроще?
+        // Не завязываться на внешних переменных, использовать arr.length. Сделчать фунцию чистой.
+
+        if (arr == null || arr.length == 0) {
+            return -1; // При условии что в массиве не подразумеваются отрицательные значения! Тогда понятно что -1 это тип не макс. элемент
         }
-        return(j);
+
+        int max = arr[0];
+        for (int i = 1; i < arr.length; ++i) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+
+        return max;
+
+//        int j=0;
+//        for (int i = 1; i < BASE_NUMBER; i++) {
+//            if (arr[j]<arr[i]) j=i;
+//        }
+//        return j;
     }
 
+    // Делай code format (есть горячие клавиши. Preferences - keymap - поиск по Code reformat (отступы будут нормальные))
+    // И когда коммитишь (зеленая иконка наверху), ставь первую и третью галочку (Reformat code and optimize imports). Тогда
+    // можно первый пункт пропустить, оно само отформатирует.
     public static String[][]  base(){
-        final String data[][] = new String[51][8];
+        final String data[][] = new String[BASE_NUMBER][8];
+
+        // Это бы оптимизировать, может в базу вынести из ресурсов или без базы. Мб так https://stackoverflow.com/questions/6349759/using-json-file-in-android-app-resources
+        // Не горит
+
                     //Название                   летуч                 оруж            магия             такт               расса            очеред            надо
         data[0][0]="Дракончик";               data[0][1]="1";    data[0][2]="1";   data[0][3]="1";   data[0][4]="1";   data[0][5]="0";   data[0][6]="3";   data[0][7]="2";
         data[1][0]="Летучие мыши";            data[1][1]="1";    data[1][2]="3";   data[1][3]="3";   data[1][4]="0";   data[1][5]="0";   data[1][6]="2";   data[1][7]="0";
@@ -66,13 +92,15 @@ class WordBase {
         data[49][0]="Ведьма";                 data[49][1]="0";   data[49][2]="1";  data[49][3]="3";  data[49][4]="1";  data[49][5]="1";  data[49][6]="3";  data[49][7]="0";
         data[50][0]="Колдун";                 data[50][1]="0";   data[50][2]="1";  data[50][3]="1";  data[50][4]="1";  data[50][5]="1";  data[50][6]="3";  data[50][7]="2";
 
-        return(data);
+        return data;
     }
 
     public static String resAccuracy(int arr[]) {
         String accuracy=(" ");
-        int j=maxScore(arr);
-        if (arr[j]==1) {accuracy="40%";}
+        int j = maxScore(arr);
+        if (arr[j] == 1) {
+            accuracy="40%";
+        }
         if (arr[j]==2) {accuracy="50%";}
         if (arr[j]==3) {accuracy="75%";}
         if (arr[j]==4) {accuracy="90%";}

@@ -11,15 +11,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import static wdx.cr.quizz.WordBase.BASE_NUMBER;
+
 class MainActivity extends AppCompatActivity {
 
     private SoundPool mySound;
-    private static int[] arr = new int[51];
-    private int qn = 1;
-    private TextView textView3, textView6, textView7, textView8, textView9;
-    private int sound, sound2;
-    private ImageView imageView7;
-    private ImageButton btn1, btn2, btn3, btn4;
+    private static int[] arr = new int[BASE_NUMBER];
+    private int qn = 1; // название ни о чем не говорит
+    private TextView textView3, textView6, textView7, textView8, textView9; // название ни о чем не говорит
+    private int sound, sound2;// название ни о чем не говорит
+    private ImageView imageView7;// название ни о чем не говорит
+    private ImageButton btn1, btn2, btn3, btn4;// название ни о чем не говорит
     private ProgressBar progress;
     private String data[][]=WordBase.base();
 
@@ -31,8 +33,8 @@ class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.q1);
         getSupportActionBar().hide();
-        btn1 = (ImageButton) findViewById(R.id.btn1);
-        btn2 = (ImageButton) findViewById(R.id.btn2);
+        btn1 =  findViewById(R.id.btn1);
+        btn2 =  findViewById(R.id.btn2);
         btn3 = (ImageButton) findViewById(R.id.btn3);
         btn4 = (ImageButton) findViewById(R.id.btn4);
         textView3 = (TextView) findViewById(R.id.textView3);
@@ -70,7 +72,6 @@ class MainActivity extends AppCompatActivity {
 
     public void btn1(View viev) {
         //textView7
-        int button=1;
         if (qn == 1) {
             setScore(0);
             setScore(0);
@@ -318,14 +319,14 @@ class MainActivity extends AppCompatActivity {
     }
 
     private void restart() {
-        for (int i = 0; i < 51; i++) arr[i] = 0;
+        for (int i = 0; i < BASE_NUMBER; i++) arr[i] = 0;
         textView3.setText("Ты боишься высоты?");
         int resID = imageView7.getContext().getResources().getIdentifier("qw1", "drawable", imageView7.getContext().getPackageName());
         imageView7.setImageResource(resID);
         textView6.setText("Ничего не боюсь");
         textView7.setText("Не проверял");
         textView8.setText("Больше чем скелетов");
-        textView9.setText("Я летун!");
+        textView9.setText("Я - летун!");
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
         textView8.setVisibility(View.VISIBLE);
