@@ -7,7 +7,7 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class start extends Activity {
+public class Start extends Activity {
 
     // Время в милесекундах, в течение которого будет отображаться Splash Screen
     SoundPool mySound;
@@ -33,9 +33,9 @@ public class start extends Activity {
             @Override
             public void run() {
                 // По истечении времени, запускаем главный активити, а Splash Screen закрываем
-                Intent mainIntent = new Intent(start.this, MainActivity.class);
-                start.this.startActivity(mainIntent);
-                start.this.finish();
+                Intent mainIntent = new Intent(Start.this, MainActivity.class);
+                Start.this.startActivity(mainIntent);
+                Start.this.finish();
             }
         }, 10);
     }

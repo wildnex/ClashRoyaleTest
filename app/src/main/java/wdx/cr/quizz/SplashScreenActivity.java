@@ -11,7 +11,7 @@ import android.os.Handler;
 public class SplashScreenActivity extends Activity {
 
     // Время в милесекундах, в течение которого будет отображаться Splash Screen
-    private final int SPLASH_DISPLAY_LENGTH = 1000;
+    private final static int SPLASH_DISPLAY_LENGTH = 1000;
     SoundPool mySound;
     int sound;
     @Override
@@ -36,8 +36,8 @@ public class SplashScreenActivity extends Activity {
             public void run() {
                 // По истечении времени, запускаем главный активити, а Splash Screen закрываем
                 Intent mainIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                SplashScreenActivity.this.startActivity(mainIntent);
-                SplashScreenActivity.this.finish();
+                startActivity(mainIntent);
+                finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
     }
